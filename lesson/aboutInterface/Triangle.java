@@ -56,6 +56,9 @@ class Triangle extends Shape implements Drawable,Measurable,Movable {
 
     // ここから インターフェースMovable(ParallelMovable継承) の部分
     public void parallelMove(){
+        // x軸に amtX, y軸に amtY
+        // 点P(xp,yp) Q(xq,yq) R(xr,yr)   → ( xp+amtX, yp+amtY)とかか？
+        
         System.out.println("平行移動しました。");
     }
     public void rotate(){
