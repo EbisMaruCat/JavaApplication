@@ -30,15 +30,27 @@ class Triangle extends Shape implements Drawable,Measurable,Movable {
 
     // ここから インターフェースMeasurableの部分
     // Perimeterを 応用？
+    // 平方根 Math.sqrt
+    // S = √s(s-a)(s-b)(s-c) ......
+    //      ↑この小文字s = 1/2 * (a + b + c)
     @Override
     public int getArea() {
-        return 0;
+        double s = getPerimeter()*0.5;
+
+        double aP = Point.distance(this.p1.x,this.p1.y,this.p2.x,this.p2.y);
+        double bP = Point.distance(this.p2.x,this.p2.y,this.p3.x,this.p3.y);
+        double cP = Point.distance(this.p1.x,this.p1.y,this.p3.x,this.p3.y);
+
+        double sBig = Math.sqrt( s*(s-aP)*(s-bP)*(s-cP) );
+        return (int) sBig;
     }
 
     @Override
-    public double getPerimeter() {
-
-        return 0;
+    public int getPerimeter() {
+        double a = Point.distance(this.p1.x,this.p1.y,this.p2.x,this.p2.y);
+        double b = Point.distance(this.p2.x,this.p2.y,this.p3.x,this.p3.y);
+        double c = Point.distance(this.p1.x,this.p1.y,this.p3.x,this.p3.y);
+        return (int)(a+b+c);
     }
 
 
@@ -69,7 +81,7 @@ https://www.javadrive.jp/start/math/
 ・ Math.pow
     累乗した値を取得
 
-・ Math.sqrt、 Math.cbrt
+・ Math.sqrt(double a)、 Math.cbrt
     平方根(sqrt、正しく丸めた正の平方根) あるいは 立方根(cbrt)を取得。
 
     平方根square root: 2乗(平方) して a になる数を a の平方根。
@@ -99,7 +111,9 @@ public double getArea() {
 拝借:
 https://stackoverflow.com/questions/2145571/java-calculating-area-of-a-triangle
 
-Area(つまり面積) = |(xA-xC)(yB-yA)-(xA-xB)(yC-yA)|/2
+A(xA,yA)  B(xB,yB)  C(xC,yC)
+
+Area(つまり面積) = ( (xA-xC)(yB-yA)-(xA-xB)(yC-yA) ) ÷ 2
 
 「*0.5」ってするから メソッドは intではなく doubleに。 ------return (キャストint) が効かないから...。
 
@@ -111,7 +125,7 @@ https://ja.wikipedia.org/wiki/%E4%B8%89%E8%A7%92%E5%BD%A2
 
 三角形の面積 :
     01.底辺・高さによる式
-    02.3辺による式
+    02.3辺による式                  ← int getArea() は 多分 この式
     03.2辺夾角による式
     04.1辺両端角（2角夾辺）による式
     05.内接円・傍接円による式
@@ -124,7 +138,16 @@ https://ja.wikipedia.org/wiki/%E4%B8%89%E8%A7%92%E5%BD%A2
     a=底辺、 hに小さいa= 頂点 A の対辺 a に対する高さ
 
 02. 3辺による式 (辺a,b,c) =
-    1/4 √2(BC+CA+AB)-( Aの2乗 + Bの2乗 + Cの2乗 )   ????
+
+    面積Sとすると、
+        S = √s(s-a)(s-b)(s-c)    ...??
+             ↑
+             この小さいsは 半周長といって 中身はこれ : 1/2 * (a + b + c)
+    これは
+        S = 1/4 * √(a+b+c)(-a+b+c)(a-b+c)(a+b-c) と 同じ意味...???
+
+    あるいは、
+        S = 1/4 * √2(BC+CA+AB)-( Aの2乗 + Bの2乗 + Cの2乗 )   ....????
            ↑
            aの2乗 = A, bの2乗 = B, cの2乗 = C
 
@@ -166,19 +189,23 @@ B(x2,y2)
 
 距離 Length = √ ( (x2-x1)の2乗) + (y2-y1)の2乗) )　
 
-わかりやすくすると(三平方の定理がもと) :
+わかりやすくすると(三平方の定理がもと ?) :
 Lengthの2乗 =  ( (x2-x1)の2乗) + (y2-y1)の2乗 )
 
 ...あれ?
 平方根square root やん。
 え、つまり？
+点A(x1,y1)と B(x2,y2)を、
     double X = Math.sqrt( (x2-x1)の2乗) );
     double Y = Math.sqrt( (y2-y1)の2乗) );
 
     double Length = X + Y; ?
 
+
+
+
 追記 :
-Point2Dクラス から 継承された distance()メソッドについて
+Point2Dクラス から 継承された Point.distance()メソッドについて
 https://docs.oracle.com/javase/jp/7/api/java/awt/geom/Point2D.html#distance(double,%20double)
 
 ある点 A(x1,y1) B(x2,y2)で
@@ -194,8 +221,15 @@ https://docs.oracle.com/javase/jp/7/api/java/awt/geom/Point2D.html#distance(doub
     public double distance(Point2D pt) を使うと、
     このPoint2Dから Point2Dまで の 距離を 算しゅ...つ... ????
 
-...
-だから、さっきの A(x1,y1) B(x2,y2) だったら...
 
-Length =  √()
+...
+だから、今回の A(x1,y1) B(x2,y2) C(x3,y3)だったら...
+
+Length ab =  √((x2-x1)の2乗) + ((y2-y1)の2乗)
+　　　さくっと = Point2D.distance(A.x,A.y, B.x,B.y)
+Length bc = Point2D.distance(C.x,C.y, B.x,B.y)
+Length ac = Point2D.distance(A.x,A.y, C.x,C.y)
+
+...ここはもう Math.sqrt いらない？
+　
  */
