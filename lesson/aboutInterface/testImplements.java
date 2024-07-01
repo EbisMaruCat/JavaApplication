@@ -79,8 +79,8 @@ public class testImplements {
     }
 }
 
-
-
+// コードの不吉な臭い
+// https://qiita.com/NagaokaKenichi/items/22972e6ba698c7f2978a
 /*
 
 2024/06/26
@@ -96,8 +96,8 @@ GUIやっている人向け
         // ?
         JPanel p = new JPanel();
 
-        // JFrames に 作りたいもの(JPanelの生成物 ?)を追加
-        //     == frame.add() メソッドを使って JFrames に追加 ??
+        // JFrames に 作りたいもの(JPanelの生成物 ?)を追加 == frame.add() メソッドを使って JFrames に追加 ??
+        //     Add the panel to the frame
         frame.add(p);
 
         // ボタン「三角形を移動」ヲ作る
