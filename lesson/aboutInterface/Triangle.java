@@ -43,7 +43,7 @@ class Triangle extends Shape implements Drawable,Measurable,Movable {
         frame.setVisible(true);
 
         JPanel panel = new JPanel(){
-            // @Override ...nope.
+            // @Override ...no?
             public void paintComponent(Graphics g){
                 super.paintComponent(g);
 
@@ -52,6 +52,7 @@ class Triangle extends Shape implements Drawable,Measurable,Movable {
 
                 // xとyの座標指定、配列で作成する
                 // this.p1.aa → p1.aa と、「this」を 削除してみる
+                // ...これでは 描写されないみたいだわ。
                 int[] xPoints = {
                         p1.x,
                         p2.x,
@@ -75,8 +76,10 @@ class Triangle extends Shape implements Drawable,Measurable,Movable {
 
         JButton button1 = new JButton("三角形を移動");
         panel.add(button1);
+        // frame.add(button1);
         JButton button2 = new JButton("保存");
         panel.add(button2);
+        // frame.add(button2);  oh,no...nope!
         // -------------------------------------------------
 
         System.out.println("三角を 描きました。");
