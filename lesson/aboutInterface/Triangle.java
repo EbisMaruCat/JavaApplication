@@ -27,7 +27,7 @@ class Triangle extends Shape implements Drawable,Measurable,Movable {
         this.p3=p3;
     }
 
-    
+
     // インターフェースDrawableの部分
     // 2024/06/26 JFrame、JPanel追加したから 構築(Override)できる
     // 2024/07/01  インターフェース同士の継承ならまだしも、JPanelの構築ってなんぞ？
@@ -42,26 +42,34 @@ class Triangle extends Shape implements Drawable,Measurable,Movable {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
 
-
-
         JPanel panel = new JPanel(){
-            public void paint(Graphics g){
-                super.paint(g);
+            // @Override ...nope.
+            public void paintComponent(Graphics g){
+                super.paintComponent(g);
+
+                // 色 設定
+                g.setColor(Color.LIGHT_GRAY);
+
+                // xとyの座標指定、配列で作成する
+                // this.p1.aa → p1.aa と、「this」を 削除してみる
                 int[] xPoints = {
-                        this.p1.x,
-                        this.p2.x,
-                        this.p3.x,
+                        p1.x,
+                        p2.x,
+                        p3.x,
                 };
                 int[] yPoints = {
-                        this.p1.y,
-                        this.p2.y,
-                        this.p3.y,
+                        p1.y,
+                        p2.y,
+                        p3.y,
                 };
+
+                // 描写
                 g.drawPolygon(xPoints, yPoints,3);
+
+                // 塗りつぶし
                 g.fillPolygon(xPoints, yPoints, 3);
             }
         };
-
 
         frame.add(panel);
 
