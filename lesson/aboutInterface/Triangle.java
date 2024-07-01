@@ -1,7 +1,13 @@
 
 package lesson.aboutInterface;
 
+/*
+    2024/06/24
+         06/26  JFrame,JPanel 追加
+ */
+
 // public class Point用
+import javax.swing.*;
 import java.awt.*;
 
 // Shapeクラスを継承し、 インターフェースDrawable,Measurableを実装
@@ -21,11 +27,56 @@ class Triangle extends Shape implements Drawable,Measurable,Movable {
         this.p3=p3;
     }
 
+    
     // インターフェースDrawableの部分
+    // 2024/06/26 JFrame、JPanel追加したから 構築(Override)できる
+    // 2024/07/01  インターフェース同士の継承ならまだしも、JPanelの構築ってなんぞ？
+    //             testImplements から JFrame関連 移動
     @Override
     public void draw() {
+
+        // 2024/07/01 -------------------------------------
+        JFrame frame = new JFrame();
+        frame.setTitle("課題 --三角形--");
+        frame.setSize(400,600);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+
+
+
+        JPanel panel = new JPanel(){
+            public void paint(Graphics g){
+                super.paint(g);
+                int[] xPoints = {
+                        this.p1.x,
+                        this.p2.x,
+                        this.p3.x,
+                };
+                int[] yPoints = {
+                        this.p1.y,
+                        this.p2.y,
+                        this.p3.y,
+                };
+                g.drawPolygon(xPoints, yPoints,3);
+                g.fillPolygon(xPoints, yPoints, 3);
+            }
+        };
+
+
+        frame.add(panel);
+
+        JButton button1 = new JButton("三角形を移動");
+        panel.add(button1);
+        JButton button2 = new JButton("保存");
+        panel.add(button2);
+        // -------------------------------------------------
+
         System.out.println("三角を 描きました。");
     }
+
+    // Overloadしてみっか？ でもこれだと interfaceじゃなくなるぞ？？
+    // public void draw(Graphics g){
+    // }
 
 
     // ここから インターフェースMeasurableの部分
@@ -58,10 +109,21 @@ class Triangle extends Shape implements Drawable,Measurable,Movable {
     public void parallelMove(){
         // x軸に amtX, y軸に amtY
         // 点P(xp,yp) Q(xq,yq) R(xr,yr)   → ( xp+amtX, yp+amtY)とかか？
-        
+        int ampX = 5,ampY = 5;
+
+        Triangle moveTri = new Triangle(
+                new Point(this.p1.x + ampX,this.p1.y + ampY),
+                new Point(this.p2.x + ampX,this.p2.y + ampY),
+                new Point(this.p3.x + ampX,this.p3.y + ampY)
+        );
+
         System.out.println("平行移動しました。");
     }
+
+    // 回転移動
     public void rotate(){
+        // sin θ(シータ)、 cosΘ、tanΘ
+
         System.out.println("回転しました。");
     }
 }

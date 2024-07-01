@@ -1,13 +1,17 @@
 
 /* 2024/06/19  インターフェースについて
-   06/24  追加:
+        06/24  追加:
    「平行移動を表すinterface 「ParallelMovable」
-    回転を含んだ移動を表すinterface 「Movable」(interfaceの継承を用いる) 」
+    回転を含んだ移動を表すinterface 「Movable」(interface の 継承(extends) を用いる) 」
 
  */
 package lesson.aboutInterface;
 
-class Shape {
+// 2024/07/01 試すか？
+import javax.swing.*;
+
+// 2024/07/01  extends JPanel追加
+class Shape extends JPanel {
     int size;
 }
 
@@ -19,7 +23,7 @@ interface Drawable{
 // インターフェースMeasurable
 interface Measurable{
     int getArea();
-    double getPerimeter();
+    int getPerimeter();
 }
 
 /*　
