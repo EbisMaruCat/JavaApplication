@@ -30,7 +30,7 @@ public class AddDay_re {
         System.out.print("日付(形式は yyyy/MM/dd と)、加算したい日数を 入力してください : ");
 
         Scanner sortScan = new Scanner(System.in);
-        sortScan.useDelimiter("\\s");
+        sortScan.useDelimiter("\\s");  // 空白
 
         if(sortScan.hasNext()){
             String dateStr = sortScan.next();
@@ -53,7 +53,7 @@ public class AddDay_re {
                     // L = long型用に。 これがfloat型だったら Fつける。
                     long dateEdited = date_Info.getTime() + (daysInt * 24L * 60 * 60 * 1000);
 
-                    //cal_Input.add(Calendar.DAY_OF_MONTH,daysInt);  nope.
+                    //cal_Input.add(Calendar.DAY_OF_MONTH,daysInt);  nope.unaffordable
 
                     System.out.println(dateStr
                             + " " + daysInt
