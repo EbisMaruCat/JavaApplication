@@ -64,7 +64,7 @@ public class testImplements {
                 new Point(1,1)
         );
 
-        t1.draw();
+        // t1.draw();
         System.out.println(t1.getArea());  // 面積:1??? 答えが2になっとらん
 
         Triangle tOwn = new Triangle(
@@ -74,7 +74,7 @@ public class testImplements {
                 // 3辺の長さが 4,3,5
         );
         System.out.println(tOwn.getArea()); // 面積:6
-
+        tOwn.draw();
 
     }
 }

@@ -99,9 +99,15 @@ class Triangle extends Shape implements Drawable,Measurable,Movable {
     public int getArea() {
         double s = getPerimeter()*0.5;
 
+        /*
         double aP = Point.distance(this.p1.x,this.p1.y,this.p2.x,this.p2.y);
         double bP = Point.distance(this.p2.x,this.p2.y,this.p3.x,this.p3.y);
         double cP = Point.distance(this.p1.x,this.p1.y,this.p3.x,this.p3.y);
+        */
+        // this削除版
+        double aP = Point.distance(p1.x,p1.y,p2.x,p2.y);
+        double bP = Point.distance(p2.x,p2.y,p3.x,p3.y);
+        double cP = Point.distance(p1.x,p1.y,p3.x,p3.y);
 
         double sBig = Math.sqrt( s*(s-aP)*(s-bP)*(s-cP) );
         return (int) sBig;
@@ -132,6 +138,7 @@ class Triangle extends Shape implements Drawable,Measurable,Movable {
     }
 
     // 回転移動
+    // https://jp-seemore.com/app/14431/#toc32
     public void rotate(){
         // sin θ(シータ)、 cosΘ、tanΘ
 

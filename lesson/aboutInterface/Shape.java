@@ -49,3 +49,9 @@ interface Movable extends ParallelMovable{
     void rotate();
 }
 
+
+// 07/01 ----追加
+interface Scale{
+    void scalable();
+}
+
