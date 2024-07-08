@@ -57,23 +57,28 @@ public class testImplements {
         h.draw();
 
         Triangle t1 = new Triangle(
-                new Point(3,2),
-                new Point(1,3),
-                new Point(1,1)
+                // 07/08 くっそ！！！そういうことか！！！
+                // 一桁を三桁にしたら表示されとるやん！！！
+                new Point(300,200),
+                new Point(100,300),
+                new Point(100,100)
         );
 
         // Graphicsについて https://style.potepan.com/articles/31751.html
 
-        t1.draw();
+        //t1.draw();
 
         System.out.println(t1.getArea());  // 面積:1??? 答えが2になっとらん
 
         Triangle tOwn = new Triangle(
-                new Point(0,2),
-                new Point(0,6),
-                new Point(3,2)
+                // 07/08 これもや！三桁！！ GAH!!!
+                new Point(100,200),
+                new Point(100,600),
+                new Point(400,200)
                 // 3辺の長さが 4,3,5
         );
+
+        tOwn.draw();
         System.out.println(tOwn.getArea()); // 面積:6
         //tOwn.draw();
 

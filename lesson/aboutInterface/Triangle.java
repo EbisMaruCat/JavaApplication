@@ -38,7 +38,7 @@ class Triangle extends Shape implements Drawable,Measurable,Movable {
         // 2024/07/01 -------------------------------------
         JFrame frame = new JFrame();
         frame.setTitle("課題 --三角形--");
-        frame.setSize(400,600);
+        frame.setSize(600,800);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
 

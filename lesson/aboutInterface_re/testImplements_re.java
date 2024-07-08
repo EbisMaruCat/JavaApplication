@@ -17,9 +17,10 @@ public class testImplements_re {
     public static void main(String[] args){
 
         testImplements_re.triangleRe = new Triangle_re(
-                new Point(3,2),
-                new Point(1,3),
-                new Point(1,1)
+                // 一桁を三桁に変更...?
+                new Point(300,200),
+                new Point(100,300),
+                new Point(100,100)
         );
 
         // MakeFrame frame = new MakeFrame("課題 --三角形-- __re__");
@@ -35,18 +36,19 @@ public class testImplements_re {
         // ボタン表示したいなら、ここに置いたらあかん！ってのがわかった。
         // jframe.setVisible(true);
 
-        JPanel panel = new JPanel();
+        //JPanel panel = new JPanel();
 
-        jframe.add(panel);
+        //jframe.add(panel);
 
         JButton button1 = new JButton("三角形を移動");
-        panel.add(button1);
+        // panel.add(button1);
 
+        // 今度は、JPanelじゃなくて externしたCanvasTriで
+        CanvasTri canvasTri = new CanvasTri();
 
-        CanvasTri cantri = new CanvasTri();
-        jframe.add(cantri);
+        jframe.add(canvasTri);
 
-        cantri.add(button1);
+        canvasTri.add(button1);
 
         jframe.setVisible(true);
 
@@ -73,6 +75,7 @@ class MakeFrame extends JFrame{
 
 
 class CanvasTri extends JPanel{
+    @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         testImplements_re.triangleRe.draw(g);
