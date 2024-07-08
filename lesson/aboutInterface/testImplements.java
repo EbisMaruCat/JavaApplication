@@ -46,10 +46,8 @@ public class testImplements {
         frame.setVisible(true);
         // --------------------------
 
-
         // --------------- 2024/07/01 追加
         frame.setTitle("課題");    // ウィンドウ 題名
-
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);  // 閉じるを押したら プログラム終了 する 設定
         // ----------------------------------
          */
@@ -64,7 +62,10 @@ public class testImplements {
                 new Point(1,1)
         );
 
-        // t1.draw();
+        // Graphicsについて https://style.potepan.com/articles/31751.html
+
+        t1.draw();
+
         System.out.println(t1.getArea());  // 面積:1??? 答えが2になっとらん
 
         Triangle tOwn = new Triangle(
@@ -74,7 +75,7 @@ public class testImplements {
                 // 3辺の長さが 4,3,5
         );
         System.out.println(tOwn.getArea()); // 面積:6
-        tOwn.draw();
+        //tOwn.draw();
 
     }
 }

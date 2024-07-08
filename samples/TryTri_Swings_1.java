@@ -22,13 +22,10 @@ class GameWindow extends JFrame{
     public GameWindow(String title, int width, int height) {
 
         super(title);
-
         //
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-
         //
         setSize(width,height);
-
         //
         setLocationRelativeTo(null);
 
@@ -45,7 +42,13 @@ class DrawCanvas extends JPanel{
 
         //ここに描画処理を記述
         // 点(100,100)と 点(200,200) を結ぶ線
-        g.drawLine(100,100,200,200);
+        // g.drawLine(100,100,200,200);
+
+        // g.drawRect(100,100,50,50);//矩形
+        // g.fillRect(200,100,50,50);//矩形の塗りつぶし
+
+        g.drawPolygon(new int[] {125,150,100}, new int[] {100,150,150}, 3);//多角形
+        g.fillPolygon(new int[] {225,250,200}, new int[] {100,150,150}, 3);//多角形の塗りつぶし
     }
 }
 

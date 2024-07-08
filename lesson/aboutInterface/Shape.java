@@ -11,16 +11,17 @@ package lesson.aboutInterface;
 import javax.swing.*;
 
 // 2024/07/01  extends JPanel追加
-class Shape extends JPanel {
+class Shape extends JPanel{
     int size;
 }
 
-// インターフェースDrawable
+// ------インターフェースDrawable
+//
 interface Drawable{
     void draw();
 }
 
-// インターフェースMeasurable
+// ------インターフェースMeasurable
 interface Measurable{
     int getArea();
     int getPerimeter();
