@@ -3,4 +3,40 @@
 
 公開設定の可能性があるとか何とかで めっちゃこわいなぁ...;
 
+-----------------------
+内容一覧
+ぶっちゃけ製作者すら迷子状態。
 
+タイトル、ナンバリングをファイル名まで控えとけばよかった...2024/07/29
+
+-- example
+  Hello.java、help.java。
+  IntelliJ、javaお試しプログラム系。
+
+-- lesson
+ ----aboutExtends(第18~23回『ワンポイント -継承』)
+     ----generics(『-ジェネリクスと継承-』)
+ ----aboutInterface(第24回?『インターフェース』)
+ ----aboutInterface_re(復刻、やり直し版)
+ ----classAndInst(第12~17回『クラスとインスタンス』)
+     ----menucafe (演習6~) 《未確認》。
+ ----five(第1,2~回『演習５』PrimeNumberと練習関連)
+ ----four(第1,2~回『演習４』AddDayと練習関連)
+ ----nine(第1,2~回『演習９』GetPrime)
+ ----refactors(第22~26回『リファクタリング』)
+     ----refactorsJuly
+ ----test_JUnit(第1,2~回『演習７』DateData)
+
+-- org(第?回『SpringBoot入門』)
+
+--samples
+  参考プログラム。検証・把握用。not my original.
+
+
+
+comments to me
+機会があれば、やり直す。
+レポジトリ作り直して、もう一回。
+あと、pushを別のフォルダから取って貼り付けたらあかんでー
+
+それと、github教科書買っとけ。まじで。
